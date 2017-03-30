@@ -3,11 +3,12 @@
 #define __UserList__
 #include "TemplateSingleton.h"
 #include <string>
-#include <hash_map>
+#include <unordered_map>
+#include <iostream>
 
 #define USERLIST UserList::UserList::GetInstance()
 using std::string;
-using stdext::hash_map;
+using std::unordered_map;
 
 namespace UserList
 {
@@ -18,12 +19,18 @@ namespace UserList
 			string id;
 			string username;
 			bool isReady;
-			bool locatedRoom;
-			int barPosition;
+			int locatedRoom;
+			double barPosition;
 		};
-		hash_map<string, User> userList;
+		unordered_map<string, User> userList;
+		unordered_map<string, User>::iterator it;
 	public:
 		void addUser(string id, string username);
+		void setReady(string id, bool isReady);
+		bool getReady(string id);
+		void setBarPosition(string id, double barPosition);
+		int getLocatedRoom(string id);
+		void setlocatedRoom(string id, int room_id);
 		void deleteUser(string id);
 		void exitGame(string id);
 		void exitRoom(string id);

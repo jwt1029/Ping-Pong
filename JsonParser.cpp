@@ -1,5 +1,4 @@
 #include "JsonParser.h"
-#include "Authentication.h"
 
 namespace JsonParser {
 	JsonParser::JsonParser()
@@ -13,42 +12,57 @@ namespace JsonParser {
 		//this->parse(buf);
 	}
 
-	int JsonParser::parse(const char *buf)
+	json JsonParser::parse(const char *buf)
 	{
-		std::cout << "parse Start" << std::endl;
-		std::cout << "parse:" << buf << std::endl;
+		js.clear();
 		js = json::parse(buf);
 
 		process();
-		js.clear();
-		return status;
+		return js;
 	}
 
 	void JsonParser::process()
 	{
 		if (this->getType() == "register")
 		{
-			status = AUTHENTICATION->register_user(js["id"], js["password"], js["username"]);
+			js["status"] = AUTHENTICATION->register_user(js["id"], js["password"], js["username"]);
 		}
 		else if (this->getType() == "login")
 		{
-			status = AUTHENTICATION->login(js["id"], js["password"]);
+			js["status"] = AUTHENTICATION->login(js["id"], js["password"]);
 		}
 		else if (this->getType() == "createRoom")
 		{
-
+			js["status"] = GAMEMANAGER->createRoom(js["title"]);
 		}
 		else if (this->getType() == "getRoomList")
 		{
-
+			js["roomList"] = GAMEMANAGER->getRoomList();
+			js["status"] = 200;
 		}
 		else if (this->getType() == "enterRoom")
 		{
-
-		} 
+			js["status"] = GAMEMANAGER->enterRoom(js["room_id"], js["id"]);
+		}
+		else if (this->getType() == "endGame")
+		{
+			js["status"] = GAMEMANAGER->endGame(js["room_id"], js["id"]);
+		}
+		else if (this->getType() == "leaveRoom")
+		{
+			js["status"] = GAMEMANAGER->leaveRoom(js["id"], js["room_id"]);
+		}
+		else if (this->getType() == "ready")
+		{
+			js["status"] = GAMEMANAGER->ready(js["room_id"], js["id"]);
+		}
+		else if (this->getType() == "logout")
+		{
+			js["status"] = GAMEMANAGER->logout(js["id"]);
+		}
 		else {
 			std::cout << "invalid request type" << std::endl;
-			status = 0;
+			js["status"] = 0;
 		}
 	}
 

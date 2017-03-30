@@ -9,6 +9,7 @@
 #include "Connection.h"
 #include "Socket.h"
 #include "JsonParser.h"
+#include "RoomList.h"
 
 using json = nlohmann::json;
 #pragma comment(lib, "ws2_32.lib")
@@ -19,15 +20,15 @@ using json = nlohmann::json;
 #define SOCKET_ADDR "10.156.145.184"
 #define SOCKET_PORT 9999
 
+#include <unordered_map>
+using std::unordered_map;
 
 int main()
 {
-	std::string message;
 	Socket *socket = new Socket();
 	socket->create();
 	socket->address_bind(SOCKET_ADDR, SOCKET_PORT);
 	socket->listen_start();
-
 	return 0;
 }
 

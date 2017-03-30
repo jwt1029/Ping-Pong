@@ -1,10 +1,12 @@
 #pragma once
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
 #include <winsock.h>
+#include "json.hpp"
 #ifndef __Socket__
 #define __Socket__
 
 #define BUFFER_SIZE 512
+using json = nlohmann::json;
 
 class Socket {
 private:
@@ -13,6 +15,7 @@ private:
 	struct sockaddr_in client_addr, server_addr;
 	int addrlen;
 	int status;
+	json js;
 
 public:
 	Socket();

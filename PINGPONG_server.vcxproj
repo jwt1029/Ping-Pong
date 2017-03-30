@@ -137,7 +137,10 @@
   <ItemGroup>
     <ClCompile Include="Authentication.cpp" />
     <ClCompile Include="Connection.cpp" />
+    <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="JsonParser.cpp" />
+    <ClCompile Include="Room.cpp" />
+    <ClCompile Include="RoomList.cpp" />
     <ClCompile Include="server_old.cpp" />
     <ClCompile Include="Socket.cpp" />
     <ClCompile Include="TemplateSingleton.h" />
@@ -147,7 +150,10 @@
     <ClInclude Include="..\..\..\..\GitHub\json\src\json.hpp" />
     <ClInclude Include="Authentication.h" />
     <ClInclude Include="Connection.h" />
+    <ClInclude Include="GameManager.h" />
     <ClInclude Include="JsonParser.h" />
+    <ClInclude Include="Room.h" />
+    <ClInclude Include="RoomList.h" />
     <ClInclude Include="Socket.h" />
     <ClInclude Include="UserList.h" />
   </ItemGroup>

@@ -6,9 +6,6 @@
 #include <iostream>
 #include "JsonParser.h"
 
-#include "json.hpp"
-using jsonp = nlohmann::json;
-
 Socket::Socket()
 {
 	status = 0;
@@ -71,20 +68,16 @@ void Socket::listen_start()
 	std::cout << "client listen start" << std::endl;
 
 	while (1) {
-		// 클라이언트가 접속하면 접속을 허용하고 클라이언트 소켓을 생성함
+		// 클라이언트가 접속하면 접속을 허용하고 클라이언트 소켓을 생성함z
 		socket_accept();
 		if (isSocketValid()) {
+			js.clear();
 			char buffer[BUFFER_SIZE] = { 0, };
+			
 			status = 0;
 			recvMessage(buffer, BUFFER_SIZE);
-			status = JSONPARSER->parse(buffer);
-			jsonp js;
-			js["status"] = status;
-			std::cout << js["status"] << std::endl;
-
+			js = JSONPARSER->parse(buffer);
 			sendMessage(js.dump(4).c_str());
-			//delete [] buffer;
-			//delete &js;
 		}
 	}
 }

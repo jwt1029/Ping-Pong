@@ -56,8 +56,7 @@ bool Connection::excute_Query(char *query)
 		return false;
 	}
 	std::cout <<"½ÇÇàµÈ Äõ¸®: "<< query << std::endl;
-	res_set = mysql_use_result(connection);
-
+	res_set = mysql_store_result(connection);
 	return true;
 }
 

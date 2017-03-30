@@ -2,8 +2,10 @@
 #ifndef __JsonParser__
 #define __JsonParser__
 
+#include "Authentication.h"
 #include "json.hpp"
 #include "TemplateSingleton.h"
+#include "GameManager.h"
 using json = nlohmann::json;
 
 #define JSONPARSER JsonParser::JsonParser::GetInstance()
@@ -18,7 +20,7 @@ namespace JsonParser
 		JsonParser();
 		~JsonParser();
 		JsonParser(const char * buf);
-		int parse(const char * buf);
+		json parse(const char * buf);
 		void process();
 		json getType();
 	};

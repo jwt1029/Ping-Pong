@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <mysql.h>
+#include "UserList.h"
 #include "TemplateSingleton.h"
 
 
@@ -25,7 +26,7 @@ namespace Authentication
 
 	public:
 		int login(string id, string password);
-		int isLogined(string id);
+		bool isLogined(string id);
 		int register_user(string id, string password, string username);
 	};
 }

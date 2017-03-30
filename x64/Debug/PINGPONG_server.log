@@ -1,24 +1,4 @@
-﻿  JsonParser.cpp
-c:\users\production\documents\github\json\src\json.hpp(6946): warning C4244: '=': 'std::_Array_iterator<_Ty,64>::difference_type'에서 'long'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-          with
-          [
-              _Ty=char
-          ]
-  c:\users\production\documents\github\json\src\json.hpp(6904): note: 클래스 템플릿 멤버 함수 'void nlohmann::basic_json<std::map,std::vector,std::string,bool,int64_t,uint64_t,double,std::allocator,nlohmann::adl_serializer>::serializer::dump_float(double)'을(를) 컴파일하고 있습니다.
-  c:\users\production\documents\github\json\src\json.hpp(6617): note: 컴파일 중인 함수 템플릿 인스턴스화 'void nlohmann::basic_json<std::map,std::vector,std::string,bool,int64_t,uint64_t,double,std::allocator,nlohmann::adl_serializer>::serializer::dump_float(double)'에 대한 참조를 확인하십시오.
-  c:\users\production\documents\github\json\src\json.hpp(2841): note: 컴파일 중인 클래스 템플릿 인스턴스화 'nlohmann::basic_json<std::map,std::vector,std::string,bool,int64_t,uint64_t,double,std::allocator,nlohmann::adl_serializer>::serializer'에 대한 참조를 확인하세요.
-  c:\users\production\documents\github\json\src\json.hpp(2839): note: 클래스 템플릿 멤버 함수 'std::basic_string<char,std::char_traits<char>,std::allocator<char>> nlohmann::basic_json<std::map,std::vector,std::string,bool,int64_t,uint64_t,double,std::allocator,nlohmann::adl_serializer>::dump(const int) const'을(를) 컴파일하고 있습니다.
-  c:\users\production\documents\github\json\src\json.hpp(13762): note: 컴파일 중인 함수 템플릿 인스턴스화 'std::basic_string<char,std::char_traits<char>,std::allocator<char>> nlohmann::basic_json<std::map,std::vector,std::string,bool,int64_t,uint64_t,double,std::allocator,nlohmann::adl_serializer>::dump(const int) const'에 대한 참조를 확인하십시오.
-  f:\visual studio\vc\tools\msvc\14.10.25017\include\type_traits(707): note: 컴파일 중인 클래스 템플릿 인스턴스화 'nlohmann::basic_json<std::map,std::vector,std::string,bool,int64_t,uint64_t,double,std::allocator,nlohmann::adl_serializer>'에 대한 참조를 확인하세요.
-  f:\visual studio\vc\tools\msvc\14.10.25017\include\type_traits(736): note: 컴파일 중인 클래스 템플릿 인스턴스화 'std::is_nothrow_constructible<_Ty,nlohmann::basic_json<std::map,std::vector,std::string,bool,int64_t,uint64_t,double,std::allocator,nlohmann::adl_serializer> &&>'에 대한 참조를 확인하세요.
-          with
-          [
-              _Ty=nlohmann::json
-          ]
-  c:\users\production\documents\github\json\src\json.hpp(13742): note: 컴파일 중인 클래스 템플릿 인스턴스화 'std::is_nothrow_move_constructible<nlohmann::json>'에 대한 참조를 확인하세요.
-  코드를 생성하고 있습니다...
-  건너뛰고 있습니다... (관련된 변경 내용 없음)
-  server_old.cpp
-  Socket.cpp
+﻿  UserList.cpp
+c:\users\production\documents\visual studio 2015\projects\pingpong_server\pingpong_server\userlist.h(24): warning C4091: 'typedef ': 변수를 선언하지 않으면 'UserList::UserList::User' 왼쪽은 무시됩니다.
   PINGPONG_server.vcxproj -> C:\Users\production\Documents\Visual Studio 2015\Projects\PINGPONG_server\x64\Debug\PINGPONG_server.exe
   PINGPONG_server.vcxproj -> C:\Users\production\Documents\Visual Studio 2015\Projects\PINGPONG_server\x64\Debug\PINGPONG_server.pdb (Partial PDB)
