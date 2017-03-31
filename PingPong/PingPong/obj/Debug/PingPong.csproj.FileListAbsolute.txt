@@ -11,3 +11,4 @@ c:\users\dsm_024\documents\visual studio 2017\Projects\PingPong\PingPong\bin\Deb
 c:\users\dsm_024\documents\visual studio 2017\Projects\PingPong\PingPong\bin\Debug\Newtonsoft.Json.xml
 C:\Users\dsm_024\documents\visual studio 2017\Projects\PingPong\PingPong\obj\Debug\PingPong.register.resources
 C:\Users\dsm_024\documents\visual studio 2017\Projects\PingPong\PingPong\obj\Debug\PingPong.room.resources
+C:\Users\dsm_024\documents\visual studio 2017\Projects\PingPong\PingPong\obj\Debug\PingPong.game.resources

@@ -50,6 +50,7 @@ namespace PingPong
             JObject json = new JObject();
             json.Add("type", "createRoom");
             json.Add("id", id);
+            json.Add("title", textBox1.Text);
 
             sendJson(json.ToString());
         }
@@ -65,24 +66,35 @@ namespace PingPong
 
         private void addRoomBox(JObject roomList)
         {
-            JArray items = (JArray)roomList["list"];
+            Console.Write(roomList.ToString());
+            JArray items = (JArray)roomList["roomList"];
             GroupBox[] boxList = new GroupBox[items.Count];
-            for(int i = 0; i < items.Count; i++)
+            int i = 0;
+            foreach (JObject item in items)
             {
+                string name = (string)item["title"];
+                int num = (int)item["room_id"];
                 boxList[i] = new GroupBox();
                 boxList[i].Location = new Point(0, i * 20);
-                boxList[i].Size = new Size(100, 10);
+                boxList[i].Size = new Size(184, 76);
                 boxList[i].Name = "DText" + i.ToString();
                 boxList[i].TabIndex = i;
-                boxList[i].Click += new EventHandler(enterRoom);
+                boxList[i].Click += (sender, EventArgs) => { enterRoom(sender, EventArgs, num, id);};
+                boxList[i].Text = name;
                 this.Controls.Add(boxList[i]);
+                i++;
+                /// string url = item.GetValue("url");
             }
+
         }
 
-        private void enterRoom (object sender, EventArgs e)
+        private void enterRoom (object sender, EventArgs e, int num, string id)
         {
+            Console.Write(num);
             JObject paramJson = new JObject();
             paramJson.Add("type", "enterRoom");
+            paramJson.Add("room_id", num);
+            paramJson.Add("id", id);
             sendJson(paramJson.ToString());
         }
 
@@ -110,7 +122,14 @@ namespace PingPong
                     recStr = recStr.Trim();
                     recStr = recStr.Replace("\r\n", "");
                     json = JObject.Parse(recStr);
-                    string status = (string)json["status"];
+                    int status = (int)json["status"];
+                    string type = (string)json["type"];
+                    if(type.Equals("enterRoom") && status == 200) {
+                        Console.Write("true");
+                        this.Hide();
+                        game gameForm = new game();
+                        gameForm.Show();
+                    }
 
                     sender.Shutdown(SocketShutdown.Both);
                     sender.Close();
@@ -127,5 +146,34 @@ namespace PingPong
                 return json;
             }
         }
+
+        private void FormClosing(object sender, EventArgs e)
+        {
+            Console.Write("gogogo");
+            JObject result = null;
+            JObject paramJson = new JObject();
+            paramJson.Add("type", "logout");
+            paramJson.Add("id", id);
+
+            sendJson(paramJson.ToString());
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            addRoomBox(getRoom());
+        }
     }
+
+    public class CustomEventArgs : EventArgs
+    {
+        public string Message { get; set; }
+        public string SimpleData { get; set; }
+        public List<Object> Data { get; set; }
+    }
+
 }
